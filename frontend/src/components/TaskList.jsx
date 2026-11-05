@@ -21,7 +21,7 @@ const TaskList = ({
 
         <button
           onClick={onAddTask}
-          className="bg-[#4563ED] text-white p-3 rounded-xl hover:bg-blue-700 transition"
+          className="bg-[#4563ED] text-white p-3 rounded-xl hover:bg-blue-700 transition cursor-pointer shadow-sm"
           aria-label="Add task"
         >
           <Plus size={20} />
@@ -50,7 +50,7 @@ const TaskList = ({
       {/* Add Task Button */}
       <button
         onClick={onAddTask}
-        className="w-full mt-7 bg-[#4563ED] text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2"
+        className="w-full mt-7 bg-[#4563ED] text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 cursor-pointer shadow-sm"
       >
         <Plus size={18} />
         Add New Task
@@ -60,4 +60,3 @@ const TaskList = ({
 };
 
 export default TaskList;
-

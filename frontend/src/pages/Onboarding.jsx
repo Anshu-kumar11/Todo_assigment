@@ -95,7 +95,7 @@ const Onboarding = ({ onGetStarted }) => {
               className="w-full bg-[#4563ED] text-white py-4 rounded-lg
               font-semibold flex items-center justify-center gap-3
               hover:bg-blue-700 transition-all duration-300
-              hover:shadow-lg active:scale-[0.98]"
+              hover:shadow-lg active:scale-[0.98] cursor-pointer"
             >
               Get Started
               <ArrowRight size={20} />

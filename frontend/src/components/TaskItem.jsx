@@ -7,10 +7,10 @@ const TaskItem = ({ task, onToggle, onEdit, onDelete }) => {
       {/* Checkbox */}
       <button
         onClick={() => onToggle?.(task.id)}
-        className={`w-5 h-5 rounded border flex items-center justify-center shrink-0 ${
+        className={`w-5 h-5 rounded border flex items-center justify-center shrink-0 cursor-pointer transition ${
           task.completed
             ? "bg-[#4563ED] border-[#4563ED] text-white"
-            : "border-gray-300"
+            : "border-gray-300 hover:border-[#4563ED]"
         }`}
         aria-label="Toggle task status"
       >
@@ -30,7 +30,7 @@ const TaskItem = ({ task, onToggle, onEdit, onDelete }) => {
       {onEdit && (
         <button
           onClick={() => onEdit(task)}
-          className="text-gray-400 hover:text-[#4563ED]"
+          className="text-gray-400 hover:text-[#4563ED] p-1 rounded hover:bg-gray-50 cursor-pointer transition"
           aria-label="Edit task"
         >
           <Pencil size={16} />
@@ -41,7 +41,7 @@ const TaskItem = ({ task, onToggle, onEdit, onDelete }) => {
       {onDelete && (
         <button
           onClick={() => onDelete(task.id)}
-          className="text-gray-400 hover:text-red-500"
+          className="text-gray-400 hover:text-red-500 p-1 rounded hover:bg-gray-50 cursor-pointer transition"
           aria-label="Delete task"
         >
           <Trash2 size={16} />
@@ -52,4 +52,3 @@ const TaskItem = ({ task, onToggle, onEdit, onDelete }) => {
 };
 
 export default TaskItem;
-

@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link
           to="/dashboard"
-          className="flex items-center gap-2 text-[#4563ED] font-bold text-lg"
+          className="flex items-center gap-2 text-[#4563ED] font-bold text-lg cursor-pointer"
         >
           <div className="bg-[#4563ED] text-white p-1.5 rounded-lg">
             <CheckSquare size={18} />
@@ -28,7 +28,7 @@ const Navbar = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm font-medium transition ${
+                className={`text-sm font-medium transition cursor-pointer ${
                   location.pathname === link.to
                     ? "text-[#4563ED]"
                     : "text-gray-500 hover:text-gray-900"
@@ -40,10 +40,10 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <button className="p-2 text-gray-500 hover:text-[#4563ED] rounded-lg hover:bg-gray-50">
+            <button className="p-2 text-gray-500 hover:text-[#4563ED] rounded-lg hover:bg-gray-50 cursor-pointer transition">
               <Bell size={18} />
             </button>
-            <button className="p-2 text-gray-500 hover:text-[#4563ED] rounded-lg hover:bg-gray-50">
+            <button className="p-2 text-gray-500 hover:text-[#4563ED] rounded-lg hover:bg-gray-50 cursor-pointer transition">
               <Settings size={18} />
             </button>
           </div>

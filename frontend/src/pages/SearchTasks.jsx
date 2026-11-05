@@ -10,10 +10,8 @@ import {
   Plus,
   X,
   Loader2,
-  Wifi,
 } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-// import { initialTasks } from "../data/dummyTasks";
 import CreateTask from "./CreateTask";
 import EditTaskModal from "../components/EditTaskModal";
 import taskService from "../services/taskService";
@@ -223,7 +221,7 @@ const SearchTasks = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => navigate("/dashboard")}
-              className="p-3 bg-white rounded-xl shadow-sm text-gray-600 hover:text-[#4563ED] hover:shadow transition"
+              className="p-3 bg-white rounded-xl shadow-sm text-gray-600 hover:text-[#4563ED] hover:shadow transition cursor-pointer"
               aria-label="Back to dashboard"
             >
               <ArrowLeft size={20} />
@@ -242,7 +240,7 @@ const SearchTasks = () => {
 
           <button
             onClick={() => setShowCreateTask(true)}
-            className="bg-[#4563ED] text-white py-2.5 px-4 rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-sm text-sm"
+            className="bg-[#4563ED] text-white py-2.5 px-4 rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-sm text-sm cursor-pointer"
           >
             <Plus size={18} />
             Add New Task
@@ -277,7 +275,7 @@ const SearchTasks = () => {
             {query && (
               <button
                 onClick={handleClearSearch}
-                className="text-gray-400 hover:text-gray-600 p-1 rounded-md"
+                className="text-gray-400 hover:text-gray-600 p-1 rounded-md cursor-pointer transition"
                 aria-label="Clear search"
               >
                 <X size={18} />
@@ -290,7 +288,7 @@ const SearchTasks = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setFilter("all")}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
               filter === "all"
                 ? "bg-[#4563ED] text-white shadow-sm"
                 : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-100"
@@ -301,7 +299,7 @@ const SearchTasks = () => {
 
           <button
             onClick={() => setFilter("pending")}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
               filter === "pending"
                 ? "bg-[#4563ED] text-white shadow-sm"
                 : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-100"
@@ -312,7 +310,7 @@ const SearchTasks = () => {
 
           <button
             onClick={() => setFilter("completed")}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`px-4 py-2 rounded-xl text-xs font-semibold transition cursor-pointer ${
               filter === "completed"
                 ? "bg-[#4563ED] text-white shadow-sm"
                 : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-100"
@@ -352,7 +350,7 @@ const SearchTasks = () => {
                       {/* Checkbox */}
                       <button
                         onClick={() => handleToggleTask(taskId)}
-                        className={`w-5 h-5 rounded border flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 ${
+                        className={`w-5 h-5 rounded border flex items-center justify-center shrink-0 mt-0.5 sm:mt-0 cursor-pointer transition ${
                           isCompleted
                             ? "bg-[#4563ED] border-[#4563ED] text-white"
                             : "border-gray-300 hover:border-[#4563ED]"
@@ -428,7 +426,7 @@ const SearchTasks = () => {
 
                       <button
                         onClick={() => setEditingTask(task)}
-                        className="text-gray-400 hover:text-[#4563ED] p-1.5 rounded-lg hover:bg-gray-50 transition"
+                        className="text-gray-400 hover:text-[#4563ED] p-1.5 rounded-lg hover:bg-gray-50 transition cursor-pointer"
                         aria-label="Edit task"
                       >
                         <Pencil size={16} />
@@ -436,7 +434,7 @@ const SearchTasks = () => {
 
                       <button
                         onClick={() => handleDeleteTask(taskId)}
-                        className="text-gray-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-gray-50 transition"
+                        className="text-gray-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-gray-50 transition cursor-pointer"
                         aria-label="Delete task"
                       >
                         <Trash2 size={16} />
@@ -455,7 +453,7 @@ const SearchTasks = () => {
                 {query && (
                   <button
                     onClick={handleClearSearch}
-                    className="mt-3 text-xs text-[#4563ED] font-semibold hover:underline"
+                    className="mt-3 text-xs text-[#4563ED] font-semibold hover:underline cursor-pointer"
                   >
                     Clear search query
                   </button>

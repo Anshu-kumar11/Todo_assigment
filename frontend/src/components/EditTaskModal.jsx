@@ -65,8 +65,14 @@ const EditTaskModal = ({ task, onClose, onUpdateTask }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-3 sm:p-6">
-      <div className="bg-white w-full max-w-xl max-h-[95vh] overflow-y-auto rounded-2xl shadow-2xl">
+    <div
+      className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-3 sm:p-6 cursor-default"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white w-full max-w-xl max-h-[95vh] overflow-y-auto rounded-2xl shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-5 sm:p-7 border-b border-gray-100">
           <div>
@@ -79,7 +85,7 @@ const EditTaskModal = ({ task, onClose, onUpdateTask }) => {
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-gray-100 text-gray-500"
+            className="p-2 rounded-full hover:bg-gray-100 text-gray-500 cursor-pointer disabled:cursor-not-allowed transition"
             disabled={isSubmitting}
             aria-label="Close"
           >
@@ -117,7 +123,7 @@ const EditTaskModal = ({ task, onClose, onUpdateTask }) => {
                 value={formData.startTime}
                 onChange={handleChange}
                 disabled={isSubmitting}
-                className="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm outline-none focus:border-[#4563ED]"
+                className="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm outline-none focus:border-[#4563ED] cursor-pointer"
               />
             </div>
             <div>
@@ -131,7 +137,7 @@ const EditTaskModal = ({ task, onClose, onUpdateTask }) => {
                 value={formData.endTime}
                 onChange={handleChange}
                 disabled={isSubmitting}
-                className="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm outline-none focus:border-[#4563ED]"
+                className="w-full border border-gray-200 rounded-lg px-3 py-3 text-sm outline-none focus:border-[#4563ED] cursor-pointer"
               />
             </div>
           </div>
@@ -148,7 +154,7 @@ const EditTaskModal = ({ task, onClose, onUpdateTask }) => {
               value={formData.date}
               onChange={handleChange}
               disabled={isSubmitting}
-              className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-[#4563ED]"
+              className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm outline-none focus:border-[#4563ED] cursor-pointer"
             />
           </div>
 
@@ -164,10 +170,10 @@ const EditTaskModal = ({ task, onClose, onUpdateTask }) => {
                     key={st}
                     type="button"
                     onClick={() => setFormData((p) => ({ ...p, status: st }))}
-                    className={`flex-1 py-2.5 rounded-lg border text-xs font-semibold transition ${
+                    className={`flex-1 py-2.5 rounded-lg border text-xs font-semibold transition cursor-pointer ${
                       formData.status === st
                         ? "bg-[#4563ED] text-white border-[#4563ED]"
-                        : "bg-white text-gray-600 border-gray-200"
+                        : "bg-white text-gray-600 border-gray-200 hover:border-[#4563ED]"
                     }`}
                   >
                     {st}
@@ -187,10 +193,10 @@ const EditTaskModal = ({ task, onClose, onUpdateTask }) => {
                     key={p}
                     type="button"
                     onClick={() => setFormData((prev) => ({ ...prev, priority: p }))}
-                    className={`flex-1 py-2.5 rounded-lg border text-xs font-semibold transition ${
+                    className={`flex-1 py-2.5 rounded-lg border text-xs font-semibold transition cursor-pointer ${
                       formData.priority === p
                         ? "bg-[#4563ED] text-white border-[#4563ED]"
-                        : "bg-white text-gray-600 border-gray-200"
+                        : "bg-white text-gray-600 border-gray-200 hover:border-[#4563ED]"
                     }`}
                   >
                     {p}
@@ -223,14 +229,14 @@ const EditTaskModal = ({ task, onClose, onUpdateTask }) => {
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="flex-1 border border-gray-200 text-gray-600 py-3 rounded-lg font-semibold hover:bg-gray-50 disabled:opacity-50"
+              className="flex-1 border border-gray-200 text-gray-600 py-3 rounded-lg font-semibold hover:bg-gray-50 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed transition"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 bg-[#4563ED] text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 disabled:opacity-50"
+              className="flex-1 bg-[#4563ED] text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed shadow-sm"
             >
               {isSubmitting ? (
                 <>
@@ -252,4 +258,3 @@ const EditTaskModal = ({ task, onClose, onUpdateTask }) => {
 };
 
 export default EditTaskModal;
-

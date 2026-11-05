@@ -21,7 +21,7 @@ const WeeklyCalendar = ({ weekDays = [], selectedDate, onSelectDate, getDateKey 
             <button
               key={dateKey}
               onClick={() => onSelectDate?.(dateKey)}
-              className={`flex flex-col items-center gap-2 py-3 rounded-xl transition ${
+              className={`flex flex-col items-center gap-2 py-3 rounded-xl transition cursor-pointer ${
                 isSelected
                   ? "bg-[#4563ED] text-white shadow-md"
                   : "bg-gray-50 text-gray-500 hover:bg-blue-50"
@@ -42,4 +42,3 @@ const WeeklyCalendar = ({ weekDays = [], selectedDate, onSelectDate, getDateKey 
 };
 
 export default WeeklyCalendar;
-

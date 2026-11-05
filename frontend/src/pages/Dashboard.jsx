@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 import CreateTask from "./CreateTask";
 import EditTaskModal from "../components/EditTaskModal";
 import taskService from "../services/taskService";
-// import { initialTasks } from "../data/dummyTasks";
 
 // Get date in YYYY-MM-DD format
 const getDateKey = (date) => {
@@ -285,7 +284,7 @@ const Dashboard = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={handleViewAllTasks}
-              className="bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm shadow-sm flex items-center gap-2"
+              className="bg-white hover:bg-gray-50 border border-gray-200 text-gray-700 px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm shadow-sm flex items-center gap-2 cursor-pointer transition"
             >
               <Search size={16} />
               Search All Tasks
@@ -293,7 +292,7 @@ const Dashboard = () => {
 
             <button
               onClick={handleOpenAddTask}
-              className="bg-[#4563ED] hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm shadow-sm flex items-center gap-2 transition"
+              className="bg-[#4563ED] hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm shadow-sm flex items-center gap-2 transition cursor-pointer"
             >
               <Plus size={16} />
               Add Task
@@ -329,7 +328,7 @@ const Dashboard = () => {
 
               <button
                 onClick={handleViewAllTasks}
-                className="bg-white hover:bg-[#4563ED] hover:text-white text-[#4563ED] border border-blue-100 font-semibold text-xs sm:text-sm px-4 py-3.5 rounded-xl transition flex items-center justify-center gap-2 shadow-sm shrink-0"
+                className="bg-white hover:bg-[#4563ED] hover:text-white text-[#4563ED] border border-blue-100 font-semibold text-xs sm:text-sm px-4 py-3.5 rounded-xl transition flex items-center justify-center gap-2 shadow-sm shrink-0 cursor-pointer"
               >
                 View All Tasks
                 <ArrowRight size={16} />
@@ -361,7 +360,7 @@ const Dashboard = () => {
                     <button
                       key={dateKey}
                       onClick={() => setSelectedDate(dateKey)}
-                      className={`flex flex-col items-center gap-1.5 py-3 rounded-xl transition relative ${
+                      className={`flex flex-col items-center gap-1.5 py-3 rounded-xl transition relative cursor-pointer ${
                         isSelected
                           ? "bg-[#4563ED] text-white shadow-md"
                           : "bg-gray-50 text-gray-500 hover:bg-blue-50"
@@ -461,7 +460,7 @@ const Dashboard = () => {
 
               <button
                 onClick={handleViewAllTasks}
-                className="text-xs font-semibold text-[#4563ED] hover:text-white hover:bg-[#4563ED] bg-blue-50 px-3 py-2 rounded-xl transition flex items-center gap-1.5 border border-blue-100 shadow-sm shrink-0"
+                className="text-xs font-semibold text-[#4563ED] hover:text-white hover:bg-[#4563ED] bg-blue-50 px-3 py-2 rounded-xl transition flex items-center gap-1.5 border border-blue-100 shadow-sm shrink-0 cursor-pointer"
               >
                 View All
                 <ArrowRight size={14} />
@@ -479,7 +478,7 @@ const Dashboard = () => {
                     {/* Checkbox status toggle */}
                     <button
                       onClick={() => handleToggleTask(task.id)}
-                      className={`w-5 h-5 rounded border flex items-center justify-center shrink-0 ${
+                      className={`w-5 h-5 rounded border flex items-center justify-center shrink-0 cursor-pointer transition ${
                         task.completed
                           ? "bg-[#4563ED] border-[#4563ED] text-white"
                           : "border-gray-300 hover:border-[#4563ED]"
@@ -526,7 +525,7 @@ const Dashboard = () => {
                     {/* Edit button */}
                     <button
                       onClick={() => setEditingTask(task)}
-                      className="text-gray-400 hover:text-[#4563ED] p-1 rounded hover:bg-gray-50"
+                      className="text-gray-400 hover:text-[#4563ED] p-1 rounded hover:bg-gray-50 cursor-pointer transition"
                       aria-label="Edit task"
                     >
                       <Pencil size={15} />
@@ -535,7 +534,7 @@ const Dashboard = () => {
                     {/* Delete button */}
                     <button
                       onClick={() => handleDeleteTask(task.id)}
-                      className="text-gray-400 hover:text-red-500 p-1 rounded hover:bg-gray-50"
+                      className="text-gray-400 hover:text-red-500 p-1 rounded hover:bg-gray-50 cursor-pointer transition"
                       aria-label="Delete task"
                     >
                       <Trash2 size={15} />
@@ -549,7 +548,7 @@ const Dashboard = () => {
                   </p>
                   <button
                     onClick={handleOpenAddTask}
-                    className="mt-2 text-xs text-[#4563ED] font-semibold hover:underline"
+                    className="mt-2 text-xs text-[#4563ED] font-semibold hover:underline cursor-pointer"
                   >
                     + Create a task for {selectedDate}
                   </button>
@@ -560,7 +559,7 @@ const Dashboard = () => {
             {/* Add Task Button */}
             <button
               onClick={handleOpenAddTask}
-              className="w-full mt-7 bg-[#4563ED] text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-sm"
+              className="w-full mt-7 bg-[#4563ED] text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-sm cursor-pointer"
               aria-label="Add new task"
             >
               <Plus size={20} />
@@ -597,7 +596,7 @@ const Dashboard = () => {
               return (
                 <div
                   key={week.weekId}
-                  className={`border rounded-2xl p-5 transition-all cursor-pointer ${
+                  className={`border rounded-2xl p-5 transition-all cursor-pointer select-none ${
                     isExpanded
                       ? "border-[#4563ED] bg-blue-50/20 shadow-md ring-1 ring-[#4563ED]/20"
                       : "border-gray-200 hover:border-gray-300 hover:shadow-sm bg-white"
@@ -664,7 +663,7 @@ const Dashboard = () => {
                   {/* Expanded Task List View */}
                   {isExpanded && (
                     <div
-                      className="mt-5 pt-4 border-t border-gray-200 space-y-3"
+                      className="mt-5 pt-4 border-t border-gray-200 space-y-3 cursor-default"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
@@ -681,11 +680,11 @@ const Dashboard = () => {
                               <div className="flex items-center gap-2 min-w-0">
                                 <button
                                   onClick={() => handleToggleTask(task.id)}
-                                  className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 ${
+                                  className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 cursor-pointer transition ${
                                     task.status === "Completed" ||
                                     task.completed
                                       ? "bg-[#4563ED] border-[#4563ED] text-white"
-                                      : "border-gray-300"
+                                      : "border-gray-300 hover:border-[#4563ED]"
                                   }`}
                                 >
                                   {(task.status === "Completed" ||
@@ -711,13 +710,13 @@ const Dashboard = () => {
                               <div className="flex items-center gap-1 shrink-0">
                                 <button
                                   onClick={() => setEditingTask(task)}
-                                  className="text-gray-400 hover:text-[#4563ED] p-1"
+                                  className="text-gray-400 hover:text-[#4563ED] p-1 rounded hover:bg-gray-50 cursor-pointer transition"
                                 >
                                   <Pencil size={13} />
                                 </button>
                                 <button
                                   onClick={() => handleDeleteTask(task.id)}
-                                  className="text-gray-400 hover:text-red-500 p-1"
+                                  className="text-gray-400 hover:text-red-500 p-1 rounded hover:bg-gray-50 cursor-pointer transition"
                                 >
                                   <Trash2 size={13} />
                                 </button>

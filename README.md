@@ -1,110 +1,93 @@
-# Todo App Backend API (Mongoose & Layered Architecture)
+# 📝 Todo & Task Management App
 
-A structured, production-ready MERN stack backend built with Node.js, Express, and Mongoose implementing an enterprise 3-tier Layered Architecture: **Controller Layer &rarr; Service Layer &rarr; Repository Layer &rarr; Mongoose Model**.
-
----
-
-## 🏛️ Layered Architecture Pattern
-
-```
-HTTP Request
-     │
-     ▼
-┌────────────────────────────────────────┐
-│           Controller Layer             │  src/controllers/taskController.js
-│  - Parses HTTP request & query params  │
-│  - Returns formatted JSON responses    │
-│  - Delegates to Service Layer          │
-└──────────────────┬─────────────────────┘
-                   │
-                   ▼
-┌────────────────────────────────────────┐
-│            Service Layer               │  src/services/taskService.js
-│  - Business logic & week calculations  │
-│  - Monday-Sunday week grouping         │
-│  - Open vs Completed metrics           │
-│  - Delegates to Repository Layer       │
-└──────────────────┬─────────────────────┘
-                   │
-                   ▼
-┌────────────────────────────────────────┐
-│           Repository Layer             │  src/repositories/taskRepository.js
-│  - Isolates data access operations     │
-│  - Direct Mongoose database queries    │
-│  - find, findById, create, update, etc │
-└──────────────────┬─────────────────────┘
-                   │
-                   ▼
-┌────────────────────────────────────────┐
-│            Mongoose Model              │  src/models/taskModel.js
-│  - Task Schema with validations        │
-│  - Automatic weekId & status syncing   │
-│  - MongoDB Collection: tasks           │
-└────────────────────────────────────────┘
-```
+A full-stack task management application with weekly organization, interactive calendar, progress tracking, and live search.
 
 ---
 
-## 📁 Folder Structure
+## 🛠️ Tech Stack
 
-```
-backend/
-├── src/
-│   ├── config/
-│   │   ├── index.js             # Environment variables (PORT, MONGO_URI, CLIENT_URL)
-│   │   └── dbConnection.js      # MongoDB connection via Mongoose
-│   ├── models/
-│   │   └── taskModel.js         # Mongoose Task Schema & Model
-│   ├── repositories/
-│   │   └── taskRepository.js    # Data Access Layer (Mongoose CRUD operations)
-│   ├── services/
-│   │   └── taskService.js       # Business Logic Layer (Week grouping, metrics)
-│   ├── controllers/
-│   │   └── taskController.js    # Transport Layer (Express request/response handling)
-│   ├── routes/
-│   │   └── taskRoutes.js        # Express route definitions
-│   ├── middleware/
-│   │   ├── errorHandler.js      # 404 & Global exception handlers
-│   │   └── validateTask.js      # Request body validation (Title, Date, Time)
-│   └── utils/
-│       └── dateUtils.js         # Monday-Sunday week calculations & date formatting
-├── server.js                    # HTTP Server entry point (Port 5000)
-├── test-api.js                  # Standalone API integration tests
-├── tests/                       # Automated unit & integration test suites
-│   ├── dateUtils.test.js
-│   ├── validateTask.test.js
-│   ├── taskModel.test.js
-│   └── taskRoutes.test.js
-├── .env                         # Local environment variables
-└── package.json                 # Dependencies and test scripts
-```
+- **Frontend:** React 19, Tailwind CSS, Vite, Lucide Icons, React Router
+- **Backend:** Node.js, Express.js, MongoDB, Mongoose
 
 ---
 
-## 💾 Mongoose Schema Attributes
+## 🚀 Getting Started
 
-| Field | Type | Required | Description |
-| :--- | :--- | :---: | :--- |
-| `title` | `String` | Yes | Task title (mandatory) |
-| `description` | `String` | No | Additional details |
-| `date` | `String` | Yes | `YYYY-MM-DD` date |
-| `time` | `String` | Yes | Task time (e.g. `09:00`) |
-| `startTime` | `String` | No | Start time |
-| `endTime` | `String` | No | End time |
-| `priority` | `String` | No | `"Low"` \| `"Medium"` \| `"High"` (default: `"Medium"`) |
-| `status` | `String` | No | `"In Progress"` \| `"Completed"` (default: `"In Progress"`) |
-| `completed` | `Boolean`| No | Derived boolean synced with status |
-| `weekId` | `String` | Auto | Monday-to-Sunday week ID (e.g. `2026-11-02_to_2026-11-08`) |
-| `timestamps`| `Date` | Auto | `createdAt` and `updatedAt` |
-
----
-
-## 🚀 Running the Server
+### 1. Backend Setup
 
 ```bash
-# Start development server with auto-reload
-npm run dev
+cd backend
 
-# Run automated test suites
+# Install dependencies
+npm install
+
+# Setup environment variables
+cp .env.example .env
+```
+
+Make sure your `backend/.env` has:
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+CLIENT_URL=http://localhost:5173
+```
+
+Start the backend:
+```bash
+# Start server
+npm run dev
+```
+> Backend runs at: `http://localhost:5000`
+
+---
+
+### 2. Frontend Setup
+
+In a new terminal:
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Setup environment variables
+cp .env.example .env
+```
+
+Make sure your `frontend/.env` has:
+```env
+VITE_API_BASE_URL=http://localhost:5000/api
+```
+
+Start the frontend:
+```bash
+# Start client
+npm run dev
+```
+> Open in browser: `http://localhost:5173`
+
+---
+
+## ✨ Features
+
+- 📅 **Weekly Calendar:** Browse tasks day by day (Monday to Sunday).
+- 📊 **Weekly Overview:** Progress bar and open vs completed task counts.
+- ⚡ **CRUD Operations:** Create, edit, toggle, and delete tasks.
+- 🔍 **Live Search:** Fast debounced search by title and description.
+- 🏷️ **Filters:** Filter tasks by status (All, In Progress, Completed) and priority (Low, Medium, High).
+- 📱 **Responsive UI:** Clean modern design with smooth cursor interactions on all devices.
+
+---
+
+## 🧪 Tests
+
+```bash
+# Run backend tests
+cd backend
 npm test
+
+# Build frontend
+cd frontend
+npm run build
 ```
